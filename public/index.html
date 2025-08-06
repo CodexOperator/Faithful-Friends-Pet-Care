@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faithful Friends Pet Care - Home</title>
+    <link rel="icon" type="image/webp" href="cropped-logo-finished-wo-text.png.webp">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="nav-header">
+        <div class="container">
+            <nav class="nav-container">
+                <!-- Logo -->
+                <a href="index.html" class="nav-logo">
+                    <div class="nav-logo-icon">
+                        <img src="cropped-logo-finished-wo-text.png.webp" alt="Faithful Friends Pet Care Logo" style="width: 100%; height: 100%; object-fit: contain;">    
+                    </div>
+                    <h1 class="heading-font" style="font-size: 1.5rem; margin: 0;">Faithful Friends</h1>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services & Pricing</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-menu-list">
+                <li class="mobile-menu-item"><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="mobile-menu-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="mobile-menu-item"><a href="services.html" class="nav-link">Services & Pricing</a></li>
+                <li class="mobile-menu-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-content" style="margin-top: 70px;">
+        <!-- Hero Section -->
+        <section class="gradient-main-flair" style="padding: 3rem 0 4rem;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center;">
+                    <div style="text-align: center;">
+                        <h2 class="heading-font" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-dark);">
+                            Welcome to Faithful Friends
+                        </h2>
+                        <p style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 1.5rem; font-weight: 500;">
+                            Flexible Pet Care for Transylvania County
+                        </p>
+                        <p style="max-width: 800px; margin: 0 auto 2rem; color: var(--text-dark); line-height: 1.8;">
+                            We are a local couple serving Transylvania County and parts of Henderson County, working together to provide high-quality, reliable pet sitting and care services. With 2 years of professional experience in Henderson County and a lifetime of loving animals, we strive to give all our clients peace of mind when leaving their furry family members in our care. Our services are fully customizable to fit your pet's unique needs, whether it's a quick drop-in visit while you're at work or overnight care in your home during a lengthy vacation.
+                        </p>
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <a href="services.html" class="btn btn-primary btn-lg">
+                                View Our Services <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                            </a>
+                            <a href="contact.html" class="btn btn-secondary btn-lg">
+                                Schedule a Meet & Greet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview -->
+        <section style="padding: 4rem 0; background-color: var(--bg-white);">
+            <div class="container">
+                <h2 class="heading-font" style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Services</h2>
+                
+                <div class="services-grid" style="display: grid; gap: 2rem;">
+                    <!-- Service 1 -->
+                    <div class="card">
+                        <div style="overflow: hidden; height: 250px;">
+                            <img src="overnightstays.jpg.webp" 
+                                 alt="Overnight Stays" 
+                                 class="card-image" 
+                                 style="height: 100%;">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <h3 class="heading-font" style="font-size: 1.5rem; margin-bottom: 1rem;">Overnight Stays</h3>
+                            <p style="color: var(--text-medium); margin-bottom: 1.5rem;">
+                                For those long trips away from home, we will stay with your pet and keep them company overnight for you!
+                            </p>
+                            <a href="services.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="card">
+                        <div style="overflow: hidden; height: 250px;">
+                            <img src="dogwalks.jpg.webp" 
+                                 alt="Dog Walks" 
+                                 class="card-image" 
+                                 style="height: 100%;">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="fas fa-walking"></i>
+                            </div>
+                            <h3 class="heading-font" style="font-size: 1.5rem; margin-bottom: 1rem;">Dog Walks</h3>
+                            <p style="color: var(--text-medium); margin-bottom: 1.5rem;">
+                                Whether its for 15 minutes or 60 minutes, we will cover all your dogs exercise needs!
+                            </p>
+                            <a href="services.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="card">
+                        <div style="overflow: hidden; height: 250px;">
+                            <img src="dropins.jpg.webp" 
+                                 alt="Cat & Dog Drop-Ins" 
+                                 class="card-image" 
+                                 style="height: 100%;">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="heading-font" style="font-size: 1.5rem; margin-bottom: 1rem;">Cat & Dog Drop-Ins</h3>
+                            <p style="color: var(--text-medium); margin-bottom: 1.5rem;">
+                                Just need a quick 30 minute drop in on your cat or dog for feeding, bathroom needs, or attention? We've got you covered!
+                            </p>
+                            <a href="services.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="services.html" class="btn btn-secondary btn-lg">
+                        View All Services & Pricing
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="gradient-flair-accent" style="padding: 4rem 0;">
+            <div class="container">
+                <h2 class="heading-font" style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Why Choose Us?</h2>
+                
+                <div class="features-grid" style="display: grid; gap: 2rem;">
+                    <!-- Feature 1 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-home" style="font-size: 2rem; color: var(--primary-main);"></i>
+                        </div>
+                        <h3 class="heading-font" style="font-size: 1.25rem; margin-bottom: 0.5rem;">No Kennel Stress</h3>
+                        <p style="color: var(--text-medium);">
+                            Your pets stay comfortable and relaxed in their own familiar home environment, surrounded by their favorite toys, scents, and routines
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-award" style="font-size: 2rem; color: var(--primary-main);"></i>
+                        </div>
+                        <h3 class="heading-font" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Trusted Local Experts</h3>
+                        <p style="color: var(--text-medium);">
+                            Deep community roots with 2 years of professional pet care experience – we're neighbors you can count on to care for your furry family.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart" style="font-size: 2rem; color: var(--primary-main);"></i>
+                        </div>
+                        <h3 class="heading-font" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Family Centered Approach</h3>
+                        <p style="color: var(--text-medium);">
+                            We believe pets aren't just animals – they're beloved family members who deserve the same love, attention, and care we'd give our own.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary-main);"></i>
+                        </div>
+                        <h3 class="heading-font" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Flexibility</h3>
+                        <p style="color: var(--text-medium);">
+                            Customizable services that adapt to your pet's unique personality, needs, and your busy schedule – from quick check-ins and walks to extended overnight stays.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="padding: 4rem 0; background-color: var(--bg-white);">
+            <div class="container" style="text-align: center;">
+                <h2 class="heading-font" style="font-size: 2rem; margin-bottom: 1rem;">Ready to Get Started?</h2>
+                <p style="color: var(--text-medium); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Contact us today to schedule your free meet & greet. We'd love to meet you and your furry family members!
+                </p>
+                <a href="contact.html" class="btn btn-primary btn-lg">
+                    Contact Us Today <i class="fas fa-phone" style="margin-left: 0.5rem;"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div class="nav-logo-icon" style="width: 40px; height: 40px;">
+                            <img src="cropped-logo-finished-wo-text.png.webp" alt="Faithful Friends Pet Care Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <h3 class="heading-font">Faithful Friends</h3>
+                    </div>
+                    <p style="color: #9ca3af;">
+                        Professional pet care services with a personal touch for Transylvania County
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services & Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:828faithfulfriends@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Faithful Friends Pet Care. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--primary-main);"></i> in Transylvania County</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
