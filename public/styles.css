@@ -432,6 +432,17 @@ body {
   display: none;
 }
 
+.warning-message {
+  color: #d97706;
+  background-color: #fef3c7;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid #fcd34d;
+  display: none;
+}
+
 .form-input.error,
 .form-textarea.error {
   border-color: #dc2626;

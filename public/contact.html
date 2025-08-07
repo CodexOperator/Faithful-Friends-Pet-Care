@@ -123,7 +123,7 @@
                                     <h4 class="heading-font" style="font-size: 1.25rem; margin: 0;">Service Areas</h4>
                                 </div>
                                 <p style="color: var(--text-medium);">
-                                    Proudly serving Transylvania County and parts of Henderson County
+                                    Proudly serving all of Transylvania County, parts of Henderson County, and the town of Cashiers.
                                 </p>
                             </div>
                         </div>
@@ -159,9 +159,10 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="form-label" for="phone">Phone Number *</label>
-                                        <input type="tel" id="phone" name="phone" class="form-input" required minlength="2" maxlength="100">
+                                        <label class="form-label" for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" class="form-input" minlength="2" maxlength="100">
                                         <div class="error-message" id="phone-error"></div>
+                                        <div class="warning-message" id="phone-warning"></div>
                                     </div>
                                     
                                     <div class="form-group">
@@ -312,8 +313,28 @@
             let isValid = true;
             let errorMessage = '';
             
-            // Check required
-            if (!value) {
+            // Special handling for phone field
+            if (field.id === 'phone') {
+                const warningElement = document.getElementById('phone-warning');
+                
+                // Check for letters in phone number
+                const hasLetters = /[a-zA-Z]/.test(value);
+                if (hasLetters && value.length > 0) {
+                    warningElement.style.display = 'block';
+                    warningElement.textContent = 'Numerical entry only, or leave blank.';
+                } else {
+                    warningElement.style.display = 'none';
+                    warningElement.textContent = '';
+                }
+                
+                // Phone field is optional - no error if empty
+                if (value && (value.length < 2 || value.length > 100)) {
+                    isValid = false;
+                    errorMessage = 'Must be between 2-100 characters.';
+                }
+            }
+            // Check required for other fields
+            else if (!value) {
                 isValid = false;
                 errorMessage = 'This field is required.';
             }
