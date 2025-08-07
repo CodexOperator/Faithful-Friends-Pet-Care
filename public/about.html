@@ -60,7 +60,7 @@
         <section style="position: relative; height: 400px; overflow: hidden;">
             <img src="aboutushero.webp" 
                  alt="Faithful Friends Pet Care - Beautiful landscape" 
-                 style="width: 100%; height: 100%; object-fit: cover;">
+                 style="width: 100%; height: 100%; object-fit: cover; object-position: 90% 0%;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(255, 140, 66, 0.3), rgba(251, 191, 36, 0.3)); display: flex; align-items: center; justify-content: center;">
                 <div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     <h2 class="heading-font" style="font-size: 2.5rem; margin-bottom: 1rem;">Caring for Your Pets Like Our Own</h2>
@@ -84,10 +84,10 @@
                     </div>
 
                     <div style="background-color: var(--accent-primary); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 3rem;">
-                        <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-medium); margin-bottom: 1.5rem;">
+                        <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 1.5rem;">
                             Hi, we're Christen and Vlad! As lifelong animal lovers and Transylvania County locals, we understand that your pets are family. After spending 2 years providing pet care services in Henderson County, we've returned to Transylvania County to start Faithful Friends – offering the same caring, reliable pet care we'd want for our own furry family members.
                         </p>
-                        <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-medium);">
+                        <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-dark);">
                             We believe every pet is unique with their own personality, quirks, and needs. Our approach is simple: we treat your pets like our own beloved companions, Dovah (our smooth collie) and Simmie (our resilient three-legged cat who proves that differences make us special).
                         </p>
                     </div>
@@ -181,20 +181,22 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 3rem;">
-                        <h3 class="heading-font" style="font-size: 1.75rem; margin-bottom: 2rem; text-align: center;">What Sets Us Apart</h3>
-                        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <i class="fas fa-check-circle" style="color: var(--main-primary); font-size: 1.5rem; flex-shrink: 0;"></i>
-                                <p style="color: var(--text-medium);">Personalized care tailored to each pet's unique needs and personality</p>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <i class="fas fa-check-circle" style="color: var(--main-primary); font-size: 1.5rem; flex-shrink: 0;"></i>
-                                <p style="color: var(--text-medium);">Flexible scheduling to accommodate your busy lifestyle</p>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <i class="fas fa-check-circle" style="color: var(--main-primary); font-size: 1.5rem; flex-shrink: 0;"></i>
-                                <p style="color: var(--text-medium);">Regular updates and communication while you're away</p>
+                    <div style="margin-top: 2rem;">
+                        <div class="service-card-list" style="max-width: 800px";>
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                                <h3 class="heading-font" style="font-size: 1.75rem; margin-bottom: 2rem; text-align: center;">What Sets Us Apart</h3>
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--accent-hover); font-size: 1.5rem; flex-shrink: 0;"></i>
+                                    <p style="color: var(--text-dark);">Personalized care tailored to each pet's unique needs and personality</p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--accent-hover); font-size: 1.5rem; flex-shrink: 0;"></i>
+                                    <p style="color: var(--text-dark);">Flexible scheduling to accommodate your busy lifestyle</p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--accent-hover); font-size: 1.5rem; flex-shrink: 0;"></i>
+                                    <p style="color: var(--text-dark);">Regular updates and communication while you're away</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,15 +206,19 @@
 
         <!-- Call to Action -->
         <section class="gradient-flair-accent" style="padding: 4rem 0;">
-            <div class="container" style="text-align: center;">
-                <h2 class="heading-font" style="font-size: 2rem; margin-bottom: 1rem;">Ready to Meet Us?</h2>
-                <p style="color: var(--text-medium); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    We'd love to meet you and your pets! Schedule a free meet & greet to see how we can help care for your furry family.
-                </p>
-                <a href="contact.html" class="btn btn-secondary btn-lg">
-                    Schedule a Meet & Greet <i class="fas fa-calendar" style="margin-left: 0.5rem;"></i>
-                </a>
-            </div>
+                <div class="container" style="text-align: center;">
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        <div class="card">
+                            <h2 class="heading-font" style="font-size: 2rem; margin-bottom: 1rem;">Ready to Meet Us?</h2>
+                            <p style="color: var(--text-medium); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                            We'd love to meet you and your pets! Schedule a free meet & greet to see how we can help care for your furry family.
+                            </p>
+                            <a href="contact.html" class="btn btn-secondary">
+                            Schedule a Meet & Greet <i class="fas fa-calendar" style="margin-left: 0.5rem;"></i>
+                            </a>
+                        </div> 
+                    </div>  
+                </div>
         </section>
     </main>
 

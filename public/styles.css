@@ -156,6 +156,24 @@ body {
   text-align: center;
 }
 
+.service-card-list {
+  background-color:var(--main-hover);
+  padding: 1.5rem; 
+  border-radius: var(--radius-consistent); 
+  margin-bottom: 1.5rem;
+}
+
+.service-card-list ul {
+  text-align: left;
+}
+
+/* Pricing section button fix */
+.pricing-quote-btn {
+  width: 100%;
+  margin: 0; /* Remove all margins to prevent overflow */
+  box-sizing: border-box;
+}
+
 /* Desktop Layout for Service Cards */
 @media (min-width: 768px) {
   .service-card-layout {
@@ -164,6 +182,14 @@ body {
   
   .service-card-content {
     flex: 1;
+  }
+  
+  .service-card-list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    text-align: left;
+    padding-left: 0;
   }
 }
 
@@ -388,6 +414,7 @@ body {
   border-radius: var(--radius-sm);
   font-size: 1rem;
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .form-input:focus,
