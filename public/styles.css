@@ -3,16 +3,13 @@
 /* ===== Color Variables ===== */
 :root {
   /* Primary Colors */
-  --primary-main: #9966cc;
-  --primary-main-hover: #9999cc;
-  --primary-accent: #99cccc;
-  --primary-accent-hover: #336666;
+  --main-primary: #9966cc;
+  --main-hover: #9999cc;
+  --accent-primary: #99cccc;
+  --accent-hover: #336666;
   
   /* Background Colors */
-  --bg-main-light: #9966cc;
-  --bg-accent-gentle: #9999cc;
   --bg-flair-medium: #66ccff;
-  --bg-accent-light: #99cccc;
   --bg-orange-light: #fef3c7;
   --bg-white: #ffffff;
   --bg-gray-light: #f9fafb;
@@ -37,6 +34,8 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
+  --spacing-btn: 10px;
+  --min-btn-height: 35px;
   
   /* Border Radius */
   --radius-sm: 0.5rem;
@@ -44,7 +43,7 @@
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;
   --radius-full: 9999px;
-  --radius-consistent: 33px;
+  --radius-consistent: 35px;
   
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -62,6 +61,7 @@ body {
 }
 
 .heading-font {
+  text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
 }
@@ -81,7 +81,9 @@ body {
 
 /* ===== Component: Buttons ===== */
 .btn {
-  display: inline-flex;
+  display: inline-flex; /* Change from inline-flex to block */
+  margin: var(--spacing-sm);
+  align-self: end;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
@@ -95,29 +97,27 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--primary-accent);
+  background-color: var(--accent-primary);
   color: var(--text-dark);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-accent-hover);
+  transform: scale(1.03);
+  background-color: var(--accent-hover);
   color: var(--text-white);
   box-shadow: 0 10px 25px var(--shadow-color);
-  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background-color: var(--primary-main);
+  background-color: var(--main-primary);
   color: var(--text-white);
-  border: 2px solid var(--primary-main);
 }
 
 .btn-secondary:hover {
-  background-color: var(--primary-accent-hover);
+  background-color: var(--accent-hover);
   color: var(--text-white);
-  border: 2px solid var(--primary-accent-hover);
   box-shadow: 0 10px 25px var(--shadow-color);
-  transform: translateY(-2px);
+  transform: scale(0.98) translateY(-3px);
 }
 
 .btn-lg {
@@ -125,19 +125,27 @@ body {
   font-size: 1.125rem;
 }
 
+.btn-lg:hover {
+  transform: scale(1.03);
+}
+
 /* ===== Component: Cards ===== */
 .card {
+  display: grid;
+  flex-direction: column;
   background-color: var(--bg-white);
   border-radius: var(--radius-consistent);
   overflow: hidden;
   box-shadow: 0 4px 6px var(--shadow-color);
   transition: all var(--transition-medium);
+  
 }
 
 /* Service Card Layout - Mobile First */
 .service-card-layout {
   display: flex;
   align-items: flex-start;
+  overflow: hidden;
   gap: 1.5rem;
   flex-direction: column;
   text-align: left;
@@ -150,7 +158,7 @@ body {
 /* Desktop Layout for Service Cards */
 @media (min-width: 768px) {
   .service-card-layout {
-    flex-direction: row;
+    flex-direction: column;
   }
   
   .service-card-content {
@@ -176,13 +184,17 @@ body {
 }
 
 .card-content {
+  justify-items: center;
   padding: var(--spacing-md);
+  flex-grow: 1; 
+  position: relative;
+  min-height: 200px; /* Set desired height */ 
 }
 
 .card-icon {
   width: 48px;
   height: 48px;
-  background-color: var(--primary-main);
+  background-color: var(--main-primary);
   color: var(--text-white);
   border-radius: var(--radius-full);
   display: flex;
@@ -275,11 +287,11 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--primary-main);
+  color: var(--main-primary);
 }
 
 .nav-link.active {
-  color: var(--primary-main);
+  color: var(--main-primary);
 }
 
 /* Mobile Menu */
@@ -350,7 +362,7 @@ body {
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--primary-main);
+  border-color: var(--main-primary);
   box-shadow: 0 0 0 3px rgba(153, 153, 204, 0.1);
 }
 
@@ -400,7 +412,7 @@ body {
 }
 
 .footer-links a:hover {
-  color: var(--primary-main);
+  color: var(--main-primary);
 }
 
 .social-links {
@@ -422,7 +434,7 @@ body {
 }
 
 .social-link:hover {
-  background-color: var(--primary-main);
+  background-color: var(--main-primary);
 }
 
 .footer-bottom {
@@ -474,11 +486,11 @@ body {
 
 /* ===== Utility: Gradients ===== */
 .gradient-main-flair {
-  background: linear-gradient(135deg, var(--bg-main-light) 0%, var(--bg-flair-medium) 100%);
+  background: linear-gradient(135deg, var(--main-primary) 0%, var(--bg-flair-medium) 100%);
 }
 
 .gradient-flair-accent {
-  background: linear-gradient(135deg, var(--bg-flair-medium) 0%, var(--bg-accent-light) 100%);
+  background: linear-gradient(135deg, var(--bg-flair-medium) 0%, var(--accent-primary) 100%);
 }
 
 /* ===== Services Grid Layout ===== */
@@ -535,12 +547,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-main);
+  background: var(--main-primary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-main-hover);
+  background: var(--main-hover);
 }
 
 /* ===== Smooth Scroll ===== */
