@@ -142,30 +142,37 @@
                         <h3 class="heading-font" style="font-size: 1.75rem; margin-bottom: 2rem;">Send Us a Message</h3>
                         <div class="card">
                             <div class="card-content" style="padding: 2rem;">
-                                <form id="contactForm" style="padding-right: 2rem;">
+                                <form id="contactForm" action="https://formspree.io/f/xeozpeqg" method="POST" style="padding-right: 2rem;">
+                                    <!-- Honeypot field for spam protection -->
+                                    <input type="text" name="_gotcha" style="display: none;">
+                                    
                                     <div class="form-group">
                                         <label class="form-label" for="name">Your Name *</label>
-                                        <input type="text" id="name" class="form-input" required>
+                                        <input type="text" id="name" name="name" class="form-input" required minlength="2" maxlength="100">
+                                        <div class="error-message" id="name-error"></div>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label class="form-label" for="email">Email Address *</label>
-                                        <input type="email" id="email" class="form-input" required>
+                                        <input type="email" id="email" name="email" class="form-input" required>
+                                        <div class="error-message" id="email-error"></div>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label class="form-label" for="phone">Phone Number *</label>
-                                        <input type="tel" id="phone" class="form-input" required>
+                                        <input type="tel" id="phone" name="phone" class="form-input" required minlength="2" maxlength="100">
+                                        <div class="error-message" id="phone-error"></div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="form-label" for="petType">Type of Pet(s) *</label>
-                                        <input type="text" id="petType" class="form-input" placeholder="e.g., 2 dogs, 1 cat">
+                                        <label class="form-label" for="petType">Number/Type of Pets *</label>
+                                        <input type="text" id="petType" name="petType" class="form-input" required minlength="2" maxlength="100" placeholder="e.g., 2 dogs, 1 cat">
+                                        <div class="error-message" id="petType-error"></div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="form-label" for="service">Service Interested In *</label>
-                                        <select id="service" class="form-input">
+                                        <label class="form-label" for="service">Type of Service Requested *</label>
+                                        <select id="service" name="subject" class="form-input" required>
                                             <option value="">Select a service</option>
                                             <option value="overnight">Overnight Stays</option>
                                             <option value="walks">Dog Walks</option>
@@ -173,15 +180,19 @@
                                             <option value="multiple">Multiple Services</option>
                                             <option value="other">Other</option>
                                         </select>
+                                        <div class="error-message" id="service-error"></div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="form-label" for="message">Message</label>
-                                        <textarea id="message" class="form-textarea" required placeholder="Tell us about your pets and what services you're looking for..."></textarea>
+                                        <label class="form-label" for="message">Message/Additional Details *</label>
+                                        <textarea id="message" name="message" class="form-textarea" required minlength="2" maxlength="1000" placeholder="Tell us about your pets and what services you're looking for..."></textarea>
+                                        <div class="error-message" id="message-error"></div>
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-                                        Send Message <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
+                                    <button type="submit" id="submit-btn" class="btn btn-primary btn-lg" style="width: 100%;">
+                                        <span id="submit-text">Send Message</span>
+                                        <i class="fas fa-paper-plane" id="submit-icon" style="margin-left: 0.5rem;"></i>
+                                        <i class="fas fa-spinner fa-spin" id="submit-spinner" style="margin-left: 0.5rem; display: none;"></i>
                                     </button>
                                 </form>
                             </div>
@@ -288,30 +299,182 @@
             });
         });
         
-        // Form submission
+        // Form submission and validation
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const submitIcon = document.getElementById('submit-icon');
+        const submitSpinner = document.getElementById('submit-spinner');
+        
+        // Validation functions
+        function validateField(field, errorElement) {
+            const value = field.value.trim();
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Check required
+            if (!value) {
+                isValid = false;
+                errorMessage = 'This field is required.';
+            }
+            // Check length for text inputs
+            else if (field.type === 'text' || field.type === 'tel') {
+                if (value.length < 2 || value.length > 100) {
+                    isValid = false;
+                    errorMessage = 'Must be between 2-100 characters.';
+                }
+            }
+            // Check email format
+            else if (field.type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address.';
+                }
+            }
+            // Check textarea length
+            else if (field.tagName === 'TEXTAREA') {
+                if (value.length < 2 || value.length > 1000) {
+                    isValid = false;
+                    errorMessage = 'Must be between 2-1000 characters.';
+                }
+            }
+            
+            // Show/hide error
+            if (isValid) {
+                field.classList.remove('error');
+                errorElement.style.display = 'none';
+                errorElement.textContent = '';
+            } else {
+                field.classList.add('error');
+                errorElement.style.display = 'block';
+                errorElement.textContent = errorMessage;
+            }
+            
+            return isValid;
+        }
+        
+        // Real-time validation
+        const fields = ['name', 'email', 'phone', 'petType', 'service', 'message'];
+        fields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(fieldId + '-error');
+            
+            field.addEventListener('blur', () => {
+                validateField(field, errorElement);
+            });
+            
+            field.addEventListener('input', () => {
+                if (field.classList.contains('error')) {
+                    validateField(field, errorElement);
+                }
+            });
+        });
+        
+        // Form submission
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Get form values
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                petType: document.getElementById('petType').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value
-            };
+            // Validate all fields
+            let isFormValid = true;
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const errorElement = document.getElementById(fieldId + '-error');
+                if (!validateField(field, errorElement)) {
+                    isFormValid = false;
+                }
+            });
             
-            // In a real implementation, you would send this data to a server
-            console.log('Form submitted:', formData);
+            if (!isFormValid) {
+                return;
+            }
             
-            // Show success message
-            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+            // Show loading state
+            setLoadingState(true);
             
-            // Reset form
-            contactForm.reset();
+            try {
+                // Submit form to Formspree
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showSuccessMessage();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                showErrorMessage();
+            } finally {
+                setLoadingState(false);
+            }
         });
+        
+        function setLoadingState(isLoading) {
+            if (isLoading) {
+                // Disable form
+                contactForm.classList.add('form-disabled');
+                
+                // Change button state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Sending...';
+                submitIcon.style.display = 'none';
+                submitSpinner.style.display = 'inline-block';
+                
+                // Add overlay
+                const overlay = document.createElement('div');
+                overlay.className = 'form-overlay';
+                overlay.innerHTML = '<div class="loading-spinner"></div>';
+                contactForm.appendChild(overlay);
+            } else {
+                // Re-enable form
+                contactForm.classList.remove('form-disabled');
+                
+                // Reset button state
+                submitBtn.disabled = false;
+                submitText.textContent = 'Send Message';
+                submitIcon.style.display = 'inline-block';
+                submitSpinner.style.display = 'none';
+                
+                // Remove overlay
+                const overlay = contactForm.querySelector('.form-overlay');
+                if (overlay) {
+                    overlay.remove();
+                }
+            }
+        }
+        
+        function showSuccessMessage() {
+            const formContainer = contactForm.parentElement;
+            formContainer.innerHTML = `
+                <div class="success-message">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h3 class="heading-font" style="font-size: 1.5rem; margin-bottom: 1rem;">Message Sent!</h3>
+                    <p>Thank you for your message! We'll get back to you within 24 hours.</p>
+                </div>
+            `;
+        }
+        
+        function showErrorMessage() {
+            const existingError = document.querySelector('.error-state');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-state';
+            errorDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
+                <strong>Error:</strong> There was a problem sending your message. Please try again or contact us directly.
+            `;
+            
+            contactForm.parentElement.insertBefore(errorDiv, contactForm);
+        }
     </script>
 </body>
 </html>
