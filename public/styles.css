@@ -153,6 +153,7 @@ body {
 
 .service-card-content {
   width: 100%;
+  text-align: center;
 }
 
 /* Desktop Layout for Service Cards */
@@ -184,7 +185,7 @@ body {
 }
 
 .card-content {
-  justify-items: center;
+  text-align: center;
   padding: var(--spacing-md);
   flex-grow: 1; 
   position: relative;
@@ -200,7 +201,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing-sm);
+  margin: 0 auto var(--spacing-sm);
 }
 
 /* ===== Component: Feature Box ===== */
@@ -337,6 +338,35 @@ body {
   margin-bottom: var(--spacing-sm);
 }
 
+/* ===== Component: Contact Cards ===== */
+.contact-card-content {
+  text-align: left;
+  padding: var(--spacing-md);
+  flex-grow: 1; 
+  position: relative;
+  min-height: 200px;
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-card-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--main-primary);
+  color: var(--text-white);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 /* ===== Component: Forms ===== */
 .form-group {
   margin-bottom: var(--spacing-md);
@@ -347,6 +377,7 @@ body {
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
   color: var(--text-dark);
+  text-align: left;
 }
 
 .form-input,
